@@ -126,71 +126,65 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient pt-4 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+    <section class="hero-gradient pt-10 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
         <div class="paint-splash paint-splash-1"></div>
         <div class="paint-splash paint-splash-2"></div>
         <div class="paint-splash paint-splash-3"></div>
         
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                 
-                <!-- Left: Title and Gallery -->
-                <div class="lg:col-span-7 flex flex-col">
-                    <!-- Title -->
-                    <div class="mb-8 lg:mb-12 text-center lg:text-left">
-                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-snug md:leading-tight">
-                            <span class="block md:inline">Si se te da mal dibujar,</span>
-                            <span class="block text-indigo-600 relative">
-                                <span class="relative z-10">este es tu juego</span>
-                                <svg class="absolute -bottom-2 left-0 w-full h-3 text-orange-200" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0,7 C50,9 100,4 200,7 L200,0 L0,0 L0,7" fill="currentColor"></path>
-                                </svg>
-                            </span>
-                        </h1>
+                <!-- Title -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-snug md:leading-tight">
+                        <span class="block md:inline">Si se te da mal dibujar,</span>
+                        <span class="block text-indigo-600 relative">
+                            <span class="relative z-10">este es tu juego</span>
+                            <svg class="absolute -bottom-2 left-0 w-full h-3 text-orange-200" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0,7 C50,9 100,4 200,7 L200,0 L0,0 L0,7" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </h1>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="lg:col-span-5 rounded-xl overflow-hidden shadow-2xl card-hover">
+                    <img src="assets/images/hero.webp" alt="Caja del juego Ludomakers" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Gallery -->
+                <div class="lg:col-span-7 grid grid-cols-4 lg:grid-cols-2 gap-2 lg:gap-6">
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover h-20 md:h-48 lg:h-64">
+                         <img src="assets/images/gallery-1.webp" alt="Cartas del juego Ludomakers" class="w-full h-full object-cover">
                     </div>
-                    
-                    <!-- Gallery -->
-                    <div class="grid grid-cols-2 gap-4 lg:gap-6">
-                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
-                             <img src="assets/images/gallery-1.webp" alt="Cartas del juego Ludomakers" class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
-                            <img src="assets/images/gallery-2.webp" alt="Dibujo hecho durante una partida" class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
-                            <img src="assets/images/gallery-3.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
-                            <img src="assets/images/gallery-4.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
-                        </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover h-20 md:h-48 lg:h-64">
+                        <img src="assets/images/gallery-2.webp" alt="Dibujo hecho durante una partida" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover h-20 md:h-48 lg:h-64">
+                        <img src="assets/images/gallery-3.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover h-20 md:h-48 lg:h-64">
+                        <img src="assets/images/gallery-4.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
                     </div>
                 </div>
 
-                <!-- Right: Hero Image and CTA -->
-                <div class="lg:col-span-5 flex flex-col">
-                    <!-- Hero Image -->
-                    <div class="rounded-xl overflow-hidden shadow-2xl card-hover mb-8">
-                        <img src="assets/images/hero.webp" alt="Caja del juego Ludomakers" class="w-full h-full object-cover">
+                <!-- CTA Form -->
+                <div id="registro" class="lg:col-span-5 bg-white rounded-xl shadow-lg p-6 lg:p-8 flex flex-col justify-center transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="absolute -top-5 -right-5 bg-yellow-400 text-yellow-800 rounded-full w-20 h-20 flex items-center justify-center font-bold text-lg transform rotate-12">
+                        -30%
                     </div>
-                    
-                    <!-- CTA Form -->
-                    <div id="registro" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 flex flex-col justify-center transform hover:scale-[1.02] transition-all duration-300">
-                        <div class="absolute -top-5 -right-5 bg-yellow-400 text-yellow-800 rounded-full w-20 h-20 flex items-center justify-center font-bold text-lg transform rotate-12">
-                            -30%
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Regístrate antes del lanzamiento.
-                        </p>
-                        <h3 class="text-xl md:text-2xl font-bold text-indigo-600 mb-3 whitespace-nowrap">
-                            ¡Consigue un <span class="text-yellow-500 ">30% de descuento</span>!
-                        </h3>
-                        <form class="flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
-                                ¡Lo quiero!
-                            </button>
-                        </form>
-                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Regístrate antes del lanzamiento.
+                    </p>
+                    <h3 class="text-xl md:text-2xl font-bold text-indigo-600 mb-3 whitespace-nowrap">
+                        ¡Consigue un <span class="text-yellow-500 ">30% de descuento</span>!
+                    </h3>
+                    <form class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
+                            ¡Lo quiero!
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
