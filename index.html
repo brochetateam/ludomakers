@@ -109,6 +109,7 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-indigo-600 flex items-center">
+                    <img src="assets/images/logo-ludomakers.webp" alt="Logo Ludomakers" class="h-8 mr-2">
                     <span class="handwritten">ARTIST</span>
                     <span class="text-xs bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full ml-2 uppercase font-bold">Juego</span>
                 </a>
@@ -246,6 +247,11 @@
     </section>
 
     <!-- What's Included Section -->
+    <!-- Scroll to top button -->
+    <button x-show="scrolled" @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-5 right-5 bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-700 transition-all duration-300 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <section id="que-incluye" class="py-24 bg-gradient-to-br from-gray-50 to-indigo-50 relative">
         <!-- Decorative elements -->
         <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
