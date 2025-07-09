@@ -24,7 +24,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/></svg>");
             opacity: 0.2;
             pointer-events: none;
         }
@@ -49,36 +49,75 @@
     </style>
 </head>
 <body class="font-sans bg-gray-50">
+    <header class="absolute top-0 left-0 w-full z-20 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto py-4">
+            <img src="assets/images/saikorian-Ludo-Makers-R1-01.webp" alt="Ludomakers Logo" class="h-12">
+        </div>
+    </header>
     <!-- Hero Section -->
-    <section class="hero-gradient py-16 md:py-24 relative overflow-hidden">
+    <section class="hero-gradient pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
         <div class="paint-splash paint-splash-1"></div>
         <div class="paint-splash paint-splash-2"></div>
+        <div class="paint-splash paint-splash-3"></div>
         
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-                        Si se te da mal dibujar, <span class="text-indigo-600">este es tu juego</span>
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-8">
-                        Descubre el artista que llevas dentro sin necesidad de ser Picasso.
-                    </p>
-                    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                
+                <!-- Left: Title and Gallery -->
+                <div class="lg:col-span-7 flex flex-col justify-between">
+                    <!-- Title -->
+                    <div class="mb-8 lg:mb-12 text-center lg:text-left">
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 leading-tight">
+                            Si se te da mal dibujar, <span class="text-indigo-600 relative">
+                                <span class="relative z-10">este es tu juego</span>
+                                <svg class="absolute -bottom-2 left-0 w-full h-3 text-indigo-100" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0,7 C50,9 100,4 200,7 L200,0 L0,0 L0,7" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </h1>
+                    </div>
+
+                    <!-- Gallery -->
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover aspect-square">
+                             <img src="assets/images/gallery-1.webp" alt="Cartas del juego Ludomakers" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover aspect-square">
+                            <img src="assets/images/gallery-2.webp" alt="Dibujo hecho durante una partida" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover aspect-square">
+                            <img src="assets/images/gallery-3.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover aspect-square">
+                            <img src="assets/images/gallery-4.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Hero Image and Gallery -->
+                <div class="lg:col-span-5 flex flex-col h-full">
+                    <!-- Hero Image -->
+                    <div class="rounded-xl overflow-hidden shadow-2xl card-hover mb-1 flex-grow">
+                        <img src="assets/images/hero.webp" alt="Caja del juego Ludomakers" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- CTA Form  -->
+                    <div class="lg:bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center mb-8">
+                        <p class="text-xl text-gray-600 mb-4">
+                            Regístrate antes del lanzamiento.
+                        </p>
                         <h3 class="text-2xl font-bold text-indigo-600 mb-3">
-                            Regístrate antes del lanzamiento y obtén hasta un <span class="text-yellow-500">30% de descuento</span>
+                            ¡Consigue un <span class="text-yellow-500">30% de descuento</span>!
                         </h3>
                         <form class="flex flex-col sm:flex-row gap-3">
                             <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
-                                ¡Quiero el descuento!
+                                ¡Lo quiero!
                             </button>
                         </form>
                     </div>
-                </div>
-                <div class="md:w-1/2">
-                    <div class="relative drawing-effect rounded-xl overflow-hidden shadow-2xl">
-                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/imagen-6-1024x512.webp" alt="Juego de dibujo" class="w-full h-auto rounded-xl">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -124,15 +163,6 @@
                     </div>
                     <h3 class="text-xl font-bold text-center mb-3">Adivina y gana</h3>
                     <p class="text-gray-600 text-center">Los demás jugadores intentan adivinar qué has dibujado.</p>
-                </div>
-            </div>
-            
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_2-1024x768.webp" alt="Jugando al juego" class="w-full h-auto">
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_1-768x1024.webp" alt="Cartas del juego" class="w-full h-auto">
                 </div>
             </div>
         </div>
@@ -199,20 +229,6 @@
                             <p class="text-gray-600">Para pintar tus obras (también incluyen 9 lápices a los que no les hemos hecho fotos).</p>
                         </div>
                     </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2620-768x1024.jpg" alt="Juego de dibujo" class="w-full h-auto">
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2677-768x1024.webp" alt="Juego de dibujo" class="w-full h-auto">
                 </div>
             </div>
         </div>
