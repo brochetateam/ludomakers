@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Si se te da mal dibujar, este es tu juego</title>
+    <title>ARTIST - El juego para los que dibujan mal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --accent: #ec4899;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
         .hero-gradient {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
         }
         .card-hover:hover {
             transform: translateY(-5px);
@@ -36,48 +53,145 @@
             background: rgba(156, 146, 172, 0.1);
             filter: blur(30px);
             z-index: -1;
+            transition: transform 3s ease-in-out;
         }
         .paint-splash-1 {
             top: -50px;
             right: -50px;
+            background: rgba(99, 102, 241, 0.1);
         }
         .paint-splash-2 {
             bottom: -50px;
             left: -50px;
-            background: rgba(195, 207, 226, 0.1);
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .paint-splash-3 {
+            top: 50%;
+            left: 20%;
+            background: rgba(236, 72, 153, 0.1);
+        }
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+        .btn-primary {
+            @apply bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300;
+        }
+        .btn-secondary {
+            @apply bg-white hover:bg-gray-100 text-indigo-600 font-bold px-6 py-3 rounded-lg transition duration-300;
+        }
+        .input-primary {
+            @apply px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500;
+        }
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12;
+        }
+        .section-title span {
+            @apply relative inline-block;
+        }
+        .section-title span:after {
+            content: "";
+            @apply absolute bottom-0 left-0 w-full h-3 bg-indigo-100 opacity-70 -z-0;
+        }
+        .section-title span.text {
+            @apply relative z-10;
+        }
+        .navbar {
+            @apply py-4 bg-white/90 backdrop-blur-sm fixed w-full top-0 z-50 transition-all duration-300;
+        }
+        .navbar.scrolled {
+            @apply shadow-md;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
+<body class="font-sans bg-gray-50" x-data="{scrolled: false}" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 })">
+    <!-- Navbar -->
+    <nav class="navbar" :class="{'scrolled': scrolled}">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-indigo-600 flex items-center">
+                    <span class="handwritten">ARTIST</span>
+                    <span class="text-xs bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full ml-2 uppercase font-bold">Juego</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#como-jugar" class="text-gray-600 hover:text-indigo-600 font-medium transition">¿Cómo se juega?</a>
+                    <a href="#que-incluye" class="text-gray-600 hover:text-indigo-600 font-medium transition">¿Qué incluye?</a>
+                    <a href="#registro" class="text-gray-600 hover:text-indigo-600 font-medium transition">Registro</a>
+                </div>
+                <a href="#registro" class="hidden md:block btn-primary">¡30% Descuento!</a>
+                <button class="md:hidden text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero-gradient py-16 md:py-24 relative overflow-hidden">
+    <section class="hero-gradient pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
         <div class="paint-splash paint-splash-1"></div>
         <div class="paint-splash paint-splash-2"></div>
+        <div class="paint-splash paint-splash-3"></div>
         
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-                        Si se te da mal dibujar, <span class="text-indigo-600">este es tu juego</span>
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-8">
-                        Descubre el artista que llevas dentro sin necesidad de ser Picasso.
-                    </p>
-                    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
-                        <h3 class="text-2xl font-bold text-indigo-600 mb-3">
-                            Regístrate antes del lanzamiento y obtén hasta un <span class="text-yellow-500">30% de descuento</span>
-                        </h3>
-                        <form class="flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
-                                ¡Quiero el descuento!
-                            </button>
-                        </form>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                
+                <!-- Left: Title and Gallery -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <!-- Title -->
+                    <div class="mb-8 lg:mb-12 text-center lg:text-left">
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 leading-tight">
+                            Si se te da mal dibujar, <span class="text-indigo-600 relative">
+                                <span class="relative z-10">este es tu juego</span>
+                                <svg class="absolute -bottom-2 left-0 w-full h-3 text-indigo-100" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0,7 C50,9 100,4 200,7 L200,0 L0,0 L0,7" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </h1>
+                        <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
+                            Descubre el artista que llevas dentro sin necesidad de ser Picasso. ARTIST es el juego de mesa que convierte tus garabatos en obras de arte.
+                        </p>
+                    </div>
+                    
+                    <!-- Gallery -->
+                    <div class="grid grid-cols-2 gap-4 lg:gap-6">
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
+                             <img src="assets/images/gallery-1.webp" alt="Cartas del juego Ludomakers" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
+                            <img src="assets/images/gallery-2.webp" alt="Dibujo hecho durante una partida" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
+                            <img src="assets/images/gallery-3.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-xl overflow-hidden shadow-lg card-hover h-48 md:h-64">
+                            <img src="assets/images/gallery-4.webp" alt="Personas jugando a Ludomakers" class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="relative drawing-effect rounded-xl overflow-hidden shadow-2xl">
-                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/imagen-6-1024x512.webp" alt="Juego de dibujo" class="w-full h-auto rounded-xl">
+
+                <!-- Right: Hero Image and CTA -->
+                <div class="lg:col-span-5 flex flex-col">
+                    <!-- Hero Image -->
+                    <div class="rounded-xl overflow-hidden shadow-2xl card-hover mb-8">
+                        <img src="assets/images/hero.webp" alt="Caja del juego Ludomakers" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- CTA Form -->
+                    <div id="registro" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 flex flex-col justify-center transform hover:scale-[1.02] transition-all duration-300">
+                        <div class="absolute -top-5 -right-5 bg-yellow-400 text-yellow-800 rounded-full w-20 h-20 flex items-center justify-center font-bold text-lg transform rotate-12">
+                            -30%
+                        </div>
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-3">
+                            ¡Consigue tu descuento exclusivo!
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Regístrate ahora y sé de los primeros en recibir el juego con un 30% de descuento.
+                        </p>
+                        <form class="flex flex-col gap-3">
+                            <input type="email" placeholder="Tu correo electrónico" class="input-primary">
+                            <button class="btn-primary">
+                                ¡Lo quiero ahora!
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -85,211 +199,486 @@
     </section>
 
     <!-- How to Play Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-                <span class="relative inline-block">
-                    <span class="relative z-10">¿Cómo se juega?</span>
-                    <span class="absolute bottom-0 left-0 w-full h-3 bg-indigo-100 opacity-70 -z-0"></span>
+    <section id="como-jugar" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -mr-32 -mt-32 opacity-50"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50 rounded-full -ml-32 -mb-32 opacity-50"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-title">
+                <span>
+                    <span class="text">¿Cómo se juega?</span>
                 </span>
-            </h2>
+            </div>
 
             <!-- Video de YouTube -->
-            <div class="max-w-4xl mx-auto mb-12 shadow-xl rounded-lg overflow-hidden">
+            <div class="max-w-4xl mx-auto mb-16 shadow-xl rounded-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl">
                 <div class="aspect-video">
                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/rywZgYDLgnA?rel=0" title="Video del juego Ludomakers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <span class="text-indigo-600 text-2xl font-bold">1</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-indigo-500 card-hover">
+                    <div class="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <span class="handwritten text-indigo-600 text-4xl">1</span>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Elige una carta</h3>
-                    <p class="text-gray-600 text-center">Selecciona una palabra al azar de las 87 cartas disponibles.</p>
+                    <h3 class="text-xl font-bold text-center mb-4">Elige una carta</h3>
+                    <p class="text-gray-600 text-center">Selecciona una palabra al azar de las 87 cartas disponibles. ¡Hay palabras para todos los niveles!</p>
                 </div>
                 
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <span class="text-indigo-600 text-2xl font-bold">2</span>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-yellow-500 card-hover">
+                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <span class="handwritten text-yellow-600 text-4xl">2</span>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Dibuja la palabra</h3>
-                    <p class="text-gray-600 text-center">Usa tu creatividad para representar la palabra en el lienzo.</p>
+                    <h3 class="text-xl font-bold text-center mb-4">Dibuja la palabra</h3>
+                    <p class="text-gray-600 text-center">Usa tu creatividad para representar la palabra en el lienzo. ¡No importa si dibujas mal!</p>
                 </div>
                 
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <span class="text-indigo-600 text-2xl font-bold">3</span>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-pink-500 card-hover">
+                    <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <span class="handwritten text-pink-600 text-4xl">3</span>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Adivina y gana</h3>
-                    <p class="text-gray-600 text-center">Los demás jugadores intentan adivinar qué has dibujado.</p>
+                    <h3 class="text-xl font-bold text-center mb-4">Adivina y gana</h3>
+                    <p class="text-gray-600 text-center">Los demás jugadores intentan adivinar qué has dibujado. ¡Las risas están garantizadas!</p>
                 </div>
             </div>
             
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_2-1024x768.webp" alt="Jugando al juego" class="w-full h-auto">
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_1-768x1024.webp" alt="Cartas del juego" class="w-full h-auto">
-                </div>
+            <div class="text-center mt-12">
+                <a href="#registro" class="inline-flex items-center text-indigo-600 font-bold hover:text-indigo-800 transition-colors">
+                    ¡Quiero probarlo! <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- What's Included Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
-                ¿QUÉ INCLUYE ARTIST?
-            </h2>
-            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-                Todo lo necesario para convertirte en el artista de la fiesta, incluso si nunca has tomado un lápiz.
-            </p>
+    <section id="que-incluye" class="py-24 bg-gradient-to-br from-gray-50 to-indigo-50 relative">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+        <div class="absolute -top-10 left-1/4 w-20 h-20 bg-yellow-100 rounded-full opacity-50"></div>
+        <div class="absolute top-40 right-10 w-32 h-32 bg-indigo-100 rounded-full opacity-40"></div>
+        <div class="absolute bottom-20 left-10 w-24 h-24 bg-pink-100 rounded-full opacity-30"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    <span>
+                        <span class="text">¿QUÉ INCLUYE ARTIST?</span>
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+                    Todo lo necesario para convertirte en el artista de la fiesta, incluso si nunca has tomado un lápiz.
+                </p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 <!-- Box -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://ludomakers.com/#">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2677-scaled.webp" alt="Caja del juego" class="w-full h-full object-cover">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2677-scaled.webp" alt="Caja del juego" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <span class="text-white font-bold px-4 py-2">Ver detalles</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-indigo-600">Caja</h3>
-                            <p class="text-gray-600">El kit dónde vienen todas las herramientas de los artistas.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-box text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Caja</h3>
                         </div>
-                    </a>
+                        <p class="text-gray-600">El kit dónde vienen todas las herramientas de los artistas.</p>
+                    </div>
                 </div>
                 
                 <!-- Instructions -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://ludomakers.com/#">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_3-scaled.webp" alt="Instrucciones" class="w-full h-full object-cover">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_3-scaled.webp" alt="Instrucciones" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-yellow-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <span class="text-white font-bold px-4 py-2">Ver detalles</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-indigo-600">Instrucciones</h3>
-                            <p class="text-gray-600">Para convertirse en artista. (El caballete no va incluido)</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-book text-yellow-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Instrucciones</h3>
                         </div>
-                    </a>
+                        <p class="text-gray-600">Para convertirse en artista. (El caballete no va incluido)</p>
+                    </div>
                 </div>
                 
                 <!-- Cards -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://ludomakers.com/#">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2682-scaled.webp" alt="Cartas" class="w-full h-full object-cover">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2682-scaled.webp" alt="Cartas" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-pink-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <span class="text-white font-bold px-4 py-2">Ver detalles</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-indigo-600">Cartas</h3>
-                            <p class="text-gray-600">Un total de 87 cartas con palabras random y 3 cartas vacías para que escribas lo que quieras en ellas.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-clone text-pink-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Cartas</h3>
                         </div>
-                    </a>
+                        <p class="text-gray-600">Un total de 87 cartas con palabras random y 3 cartas vacías para que escribas lo que quieras.</p>
+                    </div>
                 </div>
                 
                 <!-- Canvas -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://ludomakers.com/#">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_4-azul-scaled.webp" alt="Hojas de lienzo" class="w-full h-full object-cover">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://ludomakers.com/wp-content/uploads/2025/03/Img_1_4-azul-scaled.webp" alt="Hojas de lienzo" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <span class="text-white font-bold px-4 py-2">Ver detalles</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-indigo-600">100 hojas de lienzo</h3>
-                            <p class="text-gray-600">Para pintar tus obras (también incluyen 9 lápices a los que no les hemos hecho fotos).</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-paint-brush text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">100 hojas de lienzo</h3>
                         </div>
-                    </a>
+                        <p class="text-gray-600">Para pintar tus obras (también incluyen 9 lápices a los que no les hemos hecho fotos).</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2620-768x1024.jpg" alt="Juego de dibujo" class="w-full h-auto">
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://ludomakers.com/wp-content/uploads/2025/03/IMG_2677-768x1024.webp" alt="Juego de dibujo" class="w-full h-auto">
+            
+            <div class="mt-16 text-center">
+                <div class="inline-block bg-white px-6 py-3 rounded-full shadow-md">
+                    <span class="text-gray-800 font-medium">¿Quieres saber más sobre el juego?</span>
+                    <a href="#registro" class="ml-4 text-indigo-600 font-bold hover:text-indigo-800 transition-colors">Regístrate ahora</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-indigo-600 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                ¡No te quedes sin tu descuento del 30%!
-            </h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Regístrate ahora y sé de los primeros en recibir el juego con un descuento exclusivo.
-            </p>
-            <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
-                <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-800">
-                <button class="bg-white hover:bg-gray-100 text-indigo-600 font-bold px-6 py-3 rounded-lg transition duration-300">
-                    ¡Registrarme ahora!
-                </button>
-            </form>
-            <p class="mt-4 text-indigo-100">
-                Solo los registrados tendrán acceso al descuento en el lanzamiento.
-            </p>
+    <section class="py-24 bg-gradient-to-r from-indigo-600 to-indigo-800 text-white relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full -mr-32 -mt-32 opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500 rounded-full -ml-32 -mb-32 opacity-20"></div>
+        
+        <!-- Paint splashes -->
+        <div class="absolute top-20 right-1/4 w-20 h-20 bg-yellow-400 rounded-full opacity-10"></div>
+        <div class="absolute bottom-20 left-1/3 w-16 h-16 bg-pink-400 rounded-full opacity-10"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                    ¡No te quedes sin tu <span class="relative inline-block">
+                        <span class="relative z-10">descuento del 30%</span>
+                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-yellow-400" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0,7 C50,9 100,4 200,7 L200,0 L0,0 L0,7" fill="currentColor"></path>
+                        </svg>
+                    </span>!
+                </h2>
+                <p class="text-xl mb-10 text-indigo-100">
+                    Regístrate ahora y sé de los primeros en recibir el juego con un descuento exclusivo.
+                    <br>¡Conviértete en el artista de la fiesta aunque no sepas dibujar!
+                </p>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
+                    <form class="flex flex-col gap-4">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="flex-1">
+                                <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-lg bg-white/90 border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                            </div>
+                            <div class="flex-1">
+                                <input type="email" placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-white/90 border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                            </div>
+                        </div>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold px-6 py-4 rounded-lg transition duration-300 transform hover:scale-105">
+                            ¡QUIERO MI DESCUENTO DEL 30%!
+                        </button>
+                    </form>
+                    <p class="mt-4 text-indigo-200 text-sm">
+                        Al registrarte, aceptas recibir información sobre el lanzamiento del juego.
+                    </p>
+                </div>
+                
+                <div class="mt-10 flex flex-wrap justify-center gap-6">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                        <span>Envío gratuito</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                        <span>Garantía de diversión</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                        <span>Acceso prioritario</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-400">© 2023 Ludomakers. Todos los derechos reservados.</p>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Logo and description -->
+                <div class="md:col-span-5">
+                    <a href="#" class="text-3xl font-bold text-white flex items-center mb-4">
+                        <span class="handwritten">ARTIST</span>
+                        <span class="text-xs bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full ml-2 uppercase font-bold">Juego</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        El juego de mesa perfecto para quienes no saben dibujar. Convierte tus garabatos en obras de arte y pásalo en grande con amigos y familia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition duration-300">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition duration-300">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition duration-300">
+                            <i class="fab fa-tiktok text-lg"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
+                
+                <!-- Quick links -->
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-bold mb-4 text-white">Enlaces rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Inicio</a></li>
+                        <li><a href="#como-jugar" class="text-gray-400 hover:text-white transition duration-300">¿Cómo se juega?</a></li>
+                        <li><a href="#que-incluye" class="text-gray-400 hover:text-white transition duration-300">¿Qué incluye?</a></li>
+                        <li><a href="#registro" class="text-gray-400 hover:text-white transition duration-300">Registro</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="md:col-span-4">
+                    <h3 class="text-lg font-bold mb-4 text-white">Contacto</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-indigo-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">info@ludomakers.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">España</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <a href="#registro" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
+                            ¡Consigue tu descuento!
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2023 Ludomakers. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Política de privacidad</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Términos y condiciones</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple animation for paint splashes
         document.addEventListener('DOMContentLoaded', function() {
+            // Paint splash animations
             const paintSplashes = document.querySelectorAll('.paint-splash');
             
             paintSplashes.forEach((splash, index) => {
-                // Random animation
+                // Initial random position and rotation
                 splash.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
                 
-                // Add subtle floating animation
+                // Add subtle floating animation with different timing for each splash
                 setInterval(() => {
                     const x = (Math.random() * 20) - 10;
                     const y = (Math.random() * 20) - 10;
-                    splash.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
+                    const rotation = Math.random() * 360;
+                    const scale = 0.8 + Math.random() * 0.4;
+                    splash.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(${scale})`;
                 }, 3000 + (index * 1000));
             });
             
-            // Form submission (example)
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            if (mobileMenuButton) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.className = 'fixed inset-0 bg-gray-900/90 backdrop-blur-sm z-50 transform translate-x-full transition-transform duration-300';
+                mobileMenu.innerHTML = `
+                    <div class="h-full flex flex-col p-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <a href="#" class="text-2xl font-bold text-white flex items-center">
+                                <span class="handwritten">ARTIST</span>
+                                <span class="text-xs bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full ml-2 uppercase font-bold">Juego</span>
+                            </a>
+                            <button class="text-white focus:outline-none close-menu">
+                                <i class="fas fa-times text-2xl"></i>
+                            </button>
+                        </div>
+                        <nav class="flex-1">
+                            <ul class="space-y-6 text-xl">
+                                <li><a href="#" class="text-white hover:text-indigo-300 transition block">Inicio</a></li>
+                                <li><a href="#como-jugar" class="text-white hover:text-indigo-300 transition block mobile-nav-link">¿Cómo se juega?</a></li>
+                                <li><a href="#que-incluye" class="text-white hover:text-indigo-300 transition block mobile-nav-link">¿Qué incluye?</a></li>
+                                <li><a href="#registro" class="text-white hover:text-indigo-300 transition block mobile-nav-link">Registro</a></li>
+                            </ul>
+                        </nav>
+                        <div class="mt-auto">
+                            <a href="#registro" class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300 text-center mobile-nav-link">¡30% Descuento!</a>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(mobileMenu);
+                
+                // Toggle mobile menu
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('translate-x-full');
+                    document.body.classList.toggle('overflow-hidden');
+                });
+                
+                // Close mobile menu
+                mobileMenu.querySelector('.close-menu').addEventListener('click', function() {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.classList.remove('overflow-hidden');
+                });
+                
+                // Close mobile menu when clicking on a link
+                mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('translate-x-full');
+                        document.body.classList.remove('overflow-hidden');
+                    });
+                });
+            }
+            
+            // Form submission with validation
             const forms = document.querySelectorAll('form');
             forms.forEach(form => {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    const email = this.querySelector('input[type="email"]').value;
-                    if (email) {
-                        alert(`¡Gracias por registrarte! Hemos enviado un correo a ${email} con más información.`);
-                        this.querySelector('input[type="email"]').value = '';
+                    
+                    // Simple validation
+                    let isValid = true;
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const nameInput = this.querySelector('input[type="text"]');
+                    
+                    if (emailInput) {
+                        const email = emailInput.value.trim();
+                        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                            emailInput.classList.add('border-red-500');
+                            isValid = false;
+                        } else {
+                            emailInput.classList.remove('border-red-500');
+                        }
+                    }
+                    
+                    if (nameInput && nameInput.value.trim() === '') {
+                        nameInput.classList.add('border-red-500');
+                        isValid = false;
+                    } else if (nameInput) {
+                        nameInput.classList.remove('border-red-500');
+                    }
+                    
+                    if (isValid) {
+                        // Success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm';
+                        successMessage.innerHTML = `
+                            <div class="bg-white rounded-xl p-8 max-w-md mx-4 shadow-2xl">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-check text-green-500 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">¡Registro completado!</h3>
+                                    <p class="text-gray-600 mb-6">Gracias por registrarte. Te hemos enviado un correo con más información sobre tu descuento del 30%.</p>
+                                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg transition duration-300 close-message">Entendido</button>
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(successMessage);
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Close message on button click
+                        successMessage.querySelector('.close-message').addEventListener('click', function() {
+                            successMessage.remove();
+                        });
                     }
                 });
             });
+            
+            // Add animation on scroll for elements
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.card-hover');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.classList.add('animate-fade-in');
+                    }
+                });
+            };
+            
+            // Add animation class
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fade-in {
+                    animation: fadeIn 0.6s ease-out forwards;
+                }
+                .card-hover {
+                    opacity: 0;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Run on load and scroll
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
         });
     </script>
 </body>
